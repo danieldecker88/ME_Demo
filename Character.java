@@ -8,7 +8,7 @@
   public static void main (String args[]) throws
   java.io.IOException {
     
-    class Create Character {
+    class Create_Character {
       //Initialize all the variables
       String name, confirm, gender, race, tech, attr, attr_str; 
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
