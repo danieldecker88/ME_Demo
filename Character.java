@@ -35,12 +35,41 @@
         } while(!confirm_name); 
         return name; 
       }
-    }
+     
+     //Choose Attributes
+     String choose_attribute(String subject, String lists[]) {
+      do {
+       try {
+        System.out.println("What is your "+subject+"? "); 
+        for (int i; i < lists.length; i++) {
+         System.out.println((i+1)+": "+lists[i]);
+        }
+        Scanner s = new Scanner(System.in); 
+        attr_str = s.nextLine();
+       } catch (Exception e) {
+        System.out.println("Answer out of range"); 
+       }
+       System.out.println("\n"); 
+       
+       att_int = Integer.parseInt(attr_str) -1; 
+       attr = lists[att_int]; 
+      } while (attr.length() < 1); 
+      return attr; 
+     }
+     
+     // Weapon Specialization
+  }
       
     // Create the Character
     Create_Character protagonist = new Create_Character(); 
     protagonist.name = protagonist.select_name(); 
-    System.out.println("Protagonist: "+protagonist.name); 
+    protagonist.gender = protagonist.choose_attribute("Gender", protagonist.genders); 
+    protagonist.race = protagonist.choose_attribute("Race", protagonist.races); 
+    protagonist.tech = protagonist.choose_attribute("Class", protagonist.techs); 
+    System.out.println("Protagonist: "+protagonist.name);
+    System.out.println("Gender: "+protagonist.gender);
+    System.out.println("Race: "+protagonist.race);
+    System.out.println("Class: "+protagonist.tech); 
       
   }
 }
