@@ -58,6 +58,54 @@
      }
      
      // Weapon Specialization
+     String[] weapon_specialization(String techs[], String tech) {
+      int specialty = -1; 
+      for(int i=0; i < techs.length; i++) {
+       if (techs[i].equals(tech)) {
+        specialty = i; 
+        break; 
+       }
+      }
+      switch(specialty) {
+       case 0: 
+        weapon_specs[0] = "Assault Rifle"; 
+        weapon_specs[1] = "Shotgun"; 
+        break; 
+       case 1: 
+        weapon_specs[0] = "Shotgun"; 
+        weapon_specs[1] = "SMG"; 
+        break; 
+       case 2: 
+        weapon_specs[0] = "Assault Rifle"; 
+        weapon_specs[1] = "Pistol"; 
+        break; 
+       case 3: 
+        weapon_specs[0] = "SMG"; 
+        weapon_specs[1] = "Pistol"; 
+        break; 
+       case 4: 
+        weapon_specs[0] = "Sniper Rifle"; 
+        weapon_specs[1] = "Pistol"; 
+        break; 
+       default: 
+        System.out.println("You failed to identify a weapon specialization"); 
+      }
+      weapon_specs[2] = "Omnitool"; 
+      return weapon_specs; 
+     }
+      
+     
+     // Print Character Sheet
+     void print_sheet() {
+      System.out.println("\n########## ME Character Sheet ##########\n"); 
+      System.out.println("Name: "+name); 
+      System.out.println("Gender: "+gender); 
+      System.out.println("Race: "+race); 
+      Sytem.out.println("Class: "+tech); 
+      System.out.println("Weapon Specializations: "+weapon_specs[0]+" and "+weapon_specs[1]); 
+      System.out.println("\n"); 
+      return; 
+     }
   }
       
     // Create the Character
@@ -66,10 +114,8 @@
     protagonist.gender = protagonist.choose_attribute("Gender", protagonist.genders); 
     protagonist.race = protagonist.choose_attribute("Race", protagonist.races); 
     protagonist.tech = protagonist.choose_attribute("Class", protagonist.techs); 
-    System.out.println("Protagonist: "+protagonist.name);
-    System.out.println("Gender: "+protagonist.gender);
-    System.out.println("Race: "+protagonist.race);
-    System.out.println("Class: "+protagonist.tech); 
+    protagonist.weapon_specs = protagonist.weapon_specialization(protagonist.techs, protagonist.tech); 
+    protagonist.print_sheet();  
       
   }
 }
