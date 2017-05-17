@@ -66,7 +66,7 @@ public class Enemy {
       Create_Character enemy = new Create_Character(); 
       enemy.race = enemy.choose_attribute(enemy.races); 
       enemy.name = enemy.generate_name(enemy.race); 
-      if (enemy.race != "Geth" | "Drone") {
+      if (enemy.race != "Geth" & enemy.race != "Drone") {
         enemy.gender = enemy.choose_attribute(enemy.genders); 
       } else enemy.gender = "None"; 
       enemy tech = enemy.choose_attribute(enemy.techs); 
