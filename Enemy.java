@@ -28,7 +28,7 @@ public class Enemy {
       
       String weapon_specialization (String techs[], String tech) {
         int specialty = -1; 
-        for (int i; i < techs.length; i++) {
+        for (int i=0; i < techs.length; i++) {
           if (techs[i].equals(tech)) {
             specialty = i; 
             break; 
@@ -69,7 +69,7 @@ public class Enemy {
       if (enemy.race != "Geth" & enemy.race != "Drone") {
         enemy.gender = enemy.choose_attribute(enemy.genders); 
       } else enemy.gender = "None"; 
-      enemy tech = enemy.choose_attribute(enemy.techs); 
+      enemy.tech = enemy.choose_attribute(enemy.techs); 
       enemy.weapon = enemy.weapon_specialization(enemy.techs, enemy.tech); 
       enemy.print_sheet(); 
     }
