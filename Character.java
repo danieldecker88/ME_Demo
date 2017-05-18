@@ -2,7 +2,9 @@
  * Character Class for Mass Effect Demo 
  */
  
- import java.io.BufferedReader; 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Scanner; 
  
  public class Character {
   public static void main (String args[]) throws
@@ -10,14 +12,15 @@
     
     class Create_Character {
       //Initialize all the variables
-      String name, confirm, gender, race, tech, attr, attr_str; 
+      String name, confirm, gender, race, tech, attr = null, attr_str; 
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
       boolean confirm_name = false;
       String genders[] = {"Male","Female"};
       String races[] = {"Human","Asari","Krogan","Salarian"};
       String techs[] = {"Warrior","Engineer","Infiltrator","Adept","Technician"};
-      String weapons[] = {"Assault Rifle","Shotgun","Sniper Rifle","Pistol","SMG","Omnitool"};
-      String weapon_specs = new String[3];
+      @SuppressWarnings("unused")
+	  String weapons[] = {"Assault Rifle","Shotgun","Sniper Rifle","Pistol","SMG","Omnitool"};
+      String[] weapon_specs = new String[3];
       int att_int;
       
       // Select Protagonist's Name
@@ -39,20 +42,23 @@
      //Choose Attributes
      String choose_attribute(String subject, String lists[]) {
       do {
+    	attr = ""; 
        try {
         System.out.println("What is your "+subject+"? "); 
-        for (int i; i < lists.length; i++) {
+        for (int i = 0; i < lists.length; i++) {
          System.out.println((i+1)+": "+lists[i]);
         }
-        Scanner s = new Scanner(System.in); 
+        @SuppressWarnings("resource")
+		Scanner s = new Scanner(System.in); 
         attr_str = s.nextLine();
-       } catch (Exception e) {
-        System.out.println("Answer out of range"); 
-       }
-       System.out.println("\n"); 
        
-       att_int = Integer.parseInt(attr_str) -1; 
-       attr = lists[att_int]; 
+        System.out.println("\n"); 
+       
+        att_int = Integer.parseInt(attr_str) -1; 
+        attr = lists[att_int];
+       } catch (Exception e) {
+           System.out.println("Answer out of range"); 
+       }
       } while (attr.length() < 1); 
       return attr; 
      }
@@ -101,11 +107,12 @@
       System.out.println("Name: "+name); 
       System.out.println("Gender: "+gender); 
       System.out.println("Race: "+race); 
-      Sytem.out.println("Class: "+tech); 
+      System.out.println("Class: "+tech); 
       System.out.println("Weapon Specializations: "+weapon_specs[0]+" and "+weapon_specs[1]); 
       System.out.println("\n"); 
       return; 
      }
+    	 
   }
       
     // Create the Character
